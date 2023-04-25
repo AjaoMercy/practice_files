@@ -13,11 +13,10 @@ int _printf(const char *format, ...)
 	int i = 0;/*iterator*/
 	int count = 0;/*to count the no of character printed*/
 	int value = 0;/*saves the numbers when counting*/
-
+	int (*f)(va_list);
+	
 	va_list args;
 	va_start(args, format);
-
-	int (*f)(va_list);
 
 	/*checks if the string is NULL*/
 	if (format == NULL)
@@ -48,6 +47,11 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == '\0')
 			{
 				break;
+			}
+			if (format[i + 1] == ' ')
+			{
+				while (format[i + 1] == ' ')
+					i++;
 			}
 			if (format[i + 1] != '\0')
 			{
